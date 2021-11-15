@@ -30,12 +30,12 @@ namespace BeamApplication
             //Beam myBeam = new Beam(new TSG.Point(1000, 1000, 1000),
             //                        new TSG.Point(6000, 6000, 1000));
             Beam myBeam = new Beam();
-            myBeam.Name = "РҐРѕРјСѓС‚";
-            myBeam.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
+            myBeam.Name = "Хомут";
+            myBeam.Material.MaterialString = "Ст3сп5_сортовой";
             myBeam.Profile.ProfileString = "CL16_5781_82";
-            myBeam.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
+            myBeam.PartNumber.Prefix = "Деталь";
             myBeam.PartNumber.StartNumber = 1;
-            myBeam.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
+            myBeam.AssemblyNumber.Prefix = "Сборка";
             myBeam.AssemblyNumber.StartNumber = 1;
             myBeam.Class = "20";
             myBeam.Position.Plane = TSM.Position.PlaneEnum.MIDDLE;
@@ -67,12 +67,12 @@ namespace BeamApplication
             myPolyBeam.AddContourPoint(point2);
             myPolyBeam.AddContourPoint(point3);
 
-            myPolyBeam.Name = "РҐРѕРјСѓС‚";
-            myPolyBeam.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
+            myPolyBeam.Name = "Хомут";
+            myPolyBeam.Material.MaterialString = "Ст3сп5_сортовой";
             myPolyBeam.Profile.ProfileString = "CL16_5781_82";
-            myPolyBeam.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
+            myPolyBeam.PartNumber.Prefix = "Деталь";
             myPolyBeam.PartNumber.StartNumber = 1;
-            myPolyBeam.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
+            myPolyBeam.AssemblyNumber.Prefix = "Сборка";
             myPolyBeam.AssemblyNumber.StartNumber = 1;
             myPolyBeam.Class = "20";
             myPolyBeam.Position.Plane = TSM.Position.PlaneEnum.MIDDLE;
@@ -89,7 +89,7 @@ namespace BeamApplication
         {
             Model myModel = new Model();
             Picker _picker = new Picker();
-            ArrayList pickedPoints = _picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "РЈРєР°Р¶Рё РїРѕР»РёРіРѕРЅ");
+            ArrayList pickedPoints = _picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "Укажи полигон");
 
             ArrayList contourPoints = new ArrayList();
             foreach (Point point in pickedPoints)
@@ -102,12 +102,12 @@ namespace BeamApplication
             myContourPlate.Contour.ContourPoints = contourPoints;
             myContourPlate.Profile.ProfileString = "PL25";
             myContourPlate.Material.MaterialString = "S235";
-            myContourPlate.Name = "РҐРѕРјСѓС‚";
-            myContourPlate.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
+            myContourPlate.Name = "Хомут";
+            myContourPlate.Material.MaterialString = "Ст3сп5_сортовой";
             //myBeam.Profile.ProfileString = "CL16_5781_82";
-            myContourPlate.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
+            myContourPlate.PartNumber.Prefix = "Деталь";
             myContourPlate.PartNumber.StartNumber = 1;
-            myContourPlate.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
+            myContourPlate.AssemblyNumber.Prefix = "Сборка";
             myContourPlate.AssemblyNumber.StartNumber = 1;
             myContourPlate.Position.Depth = TSM.Position.DepthEnum.FRONT;
             myContourPlate.Class = "20";
@@ -147,9 +147,6 @@ namespace BeamApplication
         {
             Model myModel = new Model();
 
-            //Chamfer myChamfer = new TSM.Chamfer(0, 0, Chamfer.ChamferTypeEnum.CHAMFER_ARC_POINT);
-
-
             ContourPoint point = new ContourPoint(new TSG.Point(0, 0, 0), null);
             ContourPoint point2 = new ContourPoint(new TSG.Point(2000, 2000, 0), null);
             ContourPoint point3 = new ContourPoint(new TSG.Point(0, 4000, 0), null);
@@ -160,14 +157,15 @@ namespace BeamApplication
             myPolyBeam.AddContourPoint(point2);
             myPolyBeam.AddContourPoint(point3);
 
-            myPolyBeam.Name = "РҐРѕРјСѓС‚";
-            myPolyBeam.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
+            myPolyBeam.Name = "Хомут";
+            myPolyBeam.Material.MaterialString = "Ст3сп5_сортовой";
             myPolyBeam.Profile.ProfileString = "CL16_5781_82";
-            myPolyBeam.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
+            myPolyBeam.PartNumber.Prefix = "Деталь";
             myPolyBeam.PartNumber.StartNumber = 1;
-            myPolyBeam.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
+            myPolyBeam.AssemblyNumber.Prefix = "Сборка";
             myPolyBeam.AssemblyNumber.StartNumber = 1;
-            myPolyBeam.Class = "20";
+            string a = "20";
+            myPolyBeam.Class = a;
             myPolyBeam.Position.Plane = TSM.Position.PlaneEnum.MIDDLE;
             myPolyBeam.Position.Depth = TSM.Position.DepthEnum.MIDDLE;
             myPolyBeam.Position.Rotation = TSM.Position.RotationEnum.TOP;
@@ -177,5 +175,27 @@ namespace BeamApplication
             Result = myPolyBeam.Insert();
             myModel.CommitChanges();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+        Model myModel = new Model();
+
+            //ArrayList myContourPoints2 = new ArrayList();
+
+            // myContourPoints2.Add(myContour.CalculatePolygon);
+            // contourPoints2.Add(new myCounter = );
+
+            //string B = myModel.SelectModelObject.GetAccessibilityObjectById;
+            //Assembly myAssembly = myModel.SelectModelObject as 
+            //Assembly myAssembly;
+
+            //string b = 
+           // ModelObject.Get
+
+           // Tekla.Structures.Model.Part part = myModel.SelectModelObject(Enum.);
+
+        }
+
+        
     }
 }

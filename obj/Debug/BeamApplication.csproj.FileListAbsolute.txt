@@ -1,0 +1,10 @@
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\bin\Debug\BeamApplication.exe.config
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\bin\Debug\BeamApplication.exe
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\bin\Debug\BeamApplication.pdb
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.csprojAssemblyReference.cache
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.Form1.resources
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.Properties.Resources.resources
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.csproj.GenerateResource.cache
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.csproj.CoreCompileInputs.cache
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.exe
+G:\Programs\Microsoft Visual Studio\Repositori\Homut\BeamApplication\obj\Debug\BeamApplication.pdb
