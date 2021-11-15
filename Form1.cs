@@ -178,22 +178,15 @@ namespace BeamApplication
 
         private void button6_Click(object sender, EventArgs e)
         {
-        Model myModel = new Model();
-
-            //ArrayList myContourPoints2 = new ArrayList();
-
-            // myContourPoints2.Add(myContour.CalculatePolygon);
-            // contourPoints2.Add(new myCounter = );
-
-            //string B = myModel.SelectModelObject.GetAccessibilityObjectById;
-            //Assembly myAssembly = myModel.SelectModelObject as 
-            //Assembly myAssembly;
-
-            //string b = 
-           // ModelObject.Get
-
-           // Tekla.Structures.Model.Part part = myModel.SelectModelObject(Enum.);
-
+            Model myModel = new Model();
+            Tekla.Structures.Model.UI.ModelObjectSelector selected = new Tekla.Structures.Model.UI.ModelObjectSelector();
+            Tekla.Structures.Model.ModelObjectEnumerator mySelect = (selected.GetSelectedObjects() as TSM.ModelObjectEnumerator);
+                if ((mySelect.Current as TSM.PolyBeam) != null)
+                {
+                TSM.PolyBeam myPolyBeam2 = mySelect.Current as TSM.PolyBeam;
+                TSM.ModelObjectEnumerator myChildren = myPolyBeam2.GetChildren();
+                //myChildren.Current.Identifier.GUID()
+                }
         }
 
         
