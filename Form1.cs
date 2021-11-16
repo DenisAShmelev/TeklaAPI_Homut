@@ -48,6 +48,15 @@ namespace BeamApplication
 
             myBeam.Insert();
             myModel.CommitChanges();
+
+            if (!myBeam.Insert())
+            {
+                Console.WriteLine("не добавил");
+            }
+            if (myBeam.Insert())
+            {
+                Console.WriteLine("Добавлено!");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -179,16 +188,165 @@ namespace BeamApplication
         private void button6_Click(object sender, EventArgs e)
         {
             Model myModel = new Model();
-            Tekla.Structures.Model.UI.ModelObjectSelector selected = new Tekla.Structures.Model.UI.ModelObjectSelector();
-            Tekla.Structures.Model.ModelObjectEnumerator mySelect = (selected.GetSelectedObjects() as TSM.ModelObjectEnumerator);
-                if ((mySelect.Current as TSM.PolyBeam) != null)
+
+            string selPartProfile = "PROFILE";
+            string selPartmaterial = "123";
+            double selPartSTARTX = 0.0;
+            double selPartSTARTY = 0.0;
+            double selPartSTARTZ = 0.0;
+            double selPartSTARTxINWORKPLANE = 0.0;
+            double selPartSTARTyINWORKPLANE = 0.0;
+            double selPartSTARTzINWORKPLANE = 0.0;
+            string selPARTGUID = "";
+            int selPARTID = 0;
+            string selGUID = "";
+            int selID = 0;
+
+
+            //Tekla.Structures.Model.UI.ModelObjectSelector selected = new Tekla.Structures.Model.UI.ModelObjectSelector();
+            //Tekla.Structures.Model.ModelObjectEnumerator mySelect = (selected.GetSelectedObjects() as TSM.ModelObjectEnumerator);
+            //    if ((mySelect.Current as TSM.PolyBeam) != null)
+            //    {
+            //    TSM.PolyBeam myPolyBeam2 = mySelect.Current as TSM.PolyBeam;
+            //    TSM.ModelObjectEnumerator myChildren = myPolyBeam2.GetChildren();
+            //    //myChildren.Current.Identifier.GUID()
+            //    }
+
+            if (myModel.GetConnectionStatus())
+            {
+                ModelObjectEnumerator myObjectsInModel = myModel.GetModelObjectSelector().GetAllObjects();
+                
+                while (myObjectsInModel.MoveNext())
                 {
-                TSM.PolyBeam myPolyBeam2 = mySelect.Current as TSM.PolyBeam;
-                TSM.ModelObjectEnumerator myChildren = myPolyBeam2.GetChildren();
-                //myChildren.Current.Identifier.GUID()
+                    //Beam MyBeam = myObjectsInModel.Current as Beam;
+                    PolyBeam myPolyBeam = myObjectsInModel.Current as PolyBeam;
+
+                    if (myPolyBeam != null)
+                    {
+                        myPolyBeam.GetReportProperty("PROFILE", ref selPartProfile); //Получить зщначение параметра PROFILE и записать в переменную selPartProfile объявленную чуть выше. 
+                        myPolyBeam.GetReportProperty("PROFILE", ref selPartmaterial);
+                        myPolyBeam.GetReportProperty("START_X", ref selPartSTARTX);
+                        myPolyBeam.GetReportProperty("START_Y", ref selPartSTARTY);
+                        myPolyBeam.GetReportProperty("START_Z", ref selPartSTARTZ);
+                        myPolyBeam.GetReportProperty("PART.GUID", ref selPARTGUID);
+                        myPolyBeam.GetReportProperty("PART.ID", ref selPARTID);
+                        myPolyBeam.GetReportProperty("GUID", ref selGUID);
+                        myPolyBeam.GetReportProperty("ID", ref selID);
+                        myPolyBeam.GetReportProperty("START_X_IN_WORK_PLANE", ref selPartSTARTxINWORKPLANE);
+                        myPolyBeam.GetReportProperty("START_Y_IN_WORK_PLANE", ref selPartSTARTyINWORKPLANE);
+                        myPolyBeam.GetReportProperty("START_Z_IN_WORK_PLANE", ref selPartSTARTzINWORKPLANE);
+
+                        ArrayList myPolyBeamPoints = myPolyBeam.GetPolybeamCoordinateSystems();
+                        
+                        //////foreach (Point point in myPolyBeamPoints)
+                        //////{
+                        //////    ContourPoint myPolyBeamPoint = new ContourPoint(point, new Chamfer());
+                        //////    myPolyBeamPoints.Add(myPolyBeamPoint);
+                        //////}
+                        //_picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "Укажи полигон");
+                        //myPolyBeam.GetPolybeamCoordinateSystems()
+
+                        label1.Text = myPolyBeamPoints.Count.ToString();
+                        textBox1.Text = selPartProfile;
+
+                        double RoundselPartSTARTX = Math.Round(selPartSTARTX, 2);
+                        double RoundselPartSTARTY = Math.Round(selPartSTARTY, 2);
+                        double RoundselPartSTARTZ = Math.Round(selPartSTARTZ, 2);
+
+                        double RoundselPartSTARTxINWORKPLANE = Math.Round(selPartSTARTxINWORKPLANE, 2);
+                        double RoundselPartSTARTyINWORKPLANE = Math.Round(selPartSTARTyINWORKPLANE, 2);
+                        double RoundselPartSTARTzINWORKPLANE = Math.Round(selPartSTARTzINWORKPLANE, 2);
+
+
+
+                        textBox3.AppendText("Старт ( " + RoundselPartSTARTX.ToString() + "; " + RoundselPartSTARTY.ToString() + "; " + RoundselPartSTARTZ.ToString() + " )" + Environment.NewLine);
+                        textBox3.AppendText("СтартWP ( " + RoundselPartSTARTxINWORKPLANE.ToString() + "; " + RoundselPartSTARTyINWORKPLANE.ToString() + "; " + RoundselPartSTARTzINWORKPLANE.ToString() + " )" + Environment.NewLine);
+                        textBox3.AppendText(selPARTGUID + Environment.NewLine + Environment.NewLine);
+                        textBox3.AppendText(selPARTID + Environment.NewLine + Environment.NewLine);
+                        textBox3.AppendText(selGUID + Environment.NewLine + Environment.NewLine);
+                        textBox3.AppendText(selID + Environment.NewLine + Environment.NewLine);
+                        textBox3.AppendText(selPartProfile + Environment.NewLine); //Параметр плюс переход на новую строку
+                        textBox3.AppendText(selPartProfile + Environment.NewLine);
+                        textBox3.AppendText("------------------------------" + Environment.NewLine);
+                        //textBox3.AppendText(myPolyBeamPoints[0] + Environment.NewLine + myPolyBeamPoints[1]);
+                    }
+                    
+                  //  myPolyBeam.GetReportProperty("ASSEMBLY_POS", ref AssPos);
+                   // if (!myPolyBeam.GetReportProperty("ASSEMBLY_POS", ref AssPos))
+                  //      Console.WriteLine("GetReportProperty failed!!!");
+                   // label1.Text = AssPos;
+
+                  //  Beam myBeam = myEnum.Current as Beam;
+                  //  while (myEnum.MoveNext())
+                  //  {
+                  //      if(myBeam != null)
+                 //        {
+                 //           label1.Text = AssPos
+                 //           // beam selected, add code for beam here
+                         //}
                 }
+
+                //    TSM.ModelObject selectedObject = Model.SelectModelObject(partInTheDrawing.ModelIdentifier);
+
+                    //if (myPolyBeam != null)//if (myPolyBeam != null && myPolyBeam.Name == "FOOTING") //use same name as given in exercise 1
+                    //{
+                    //    //Here is included also method for checking if pad footing already has rebar
+                    //    //This still adds the new rebar to it, but could also skip the creation of new rebar
+                    //    ModelObjectEnumerator BeamChildren = myPolyBeam.GetChildren();
+                    //    //bool HasRebars = false;
+
+                    //    while (BeamChildren.MoveNext())
+                    //    {
+                    //        if (BeamChildren.Current is Reinforcement)
+                    //        {
+                    //            //HasRebars = true;
+                    //            textBox1.AppendText("This polybeam");
+                    //        }
+                    //    }
+
+                    //    //if (HasRebars)
+                    //    //{
+                    //    //    CreateRebar(MyBeam, MyBeam.StartPoint.X, MyBeam.StartPoint.Y);
+                    //    //}
+                    //    //else
+                    //    //{
+                    //    //    CreateRebar(MyBeam, MyBeam.StartPoint.X, MyBeam.StartPoint.Y);
+                    //    //}
+                    //}
+                //}
+                myModel.CommitChanges();
+            }
+
+
         }
 
-        
+        private void button7_Click(object sender, EventArgs e)
+        {
+            Model myModel = new Model();
+
+            //public ModelObjectEnumerator GetSelectedObjects();
+
+            Beam B = new Beam(new Point(0, 0, 0), new Point(0, 0, 6000));
+            Beam B1 = new Beam(new Point(0, 1000, 0), new Point(0, 1000, 6000));
+            Beam B2 = new Beam(new Point(0, 2000, 0), new Point(0, 2000, 6000));
+
+            B.Insert();
+            B1.Insert();
+            B2.Insert();
+
+            ArrayList ObjectsToSelect = new ArrayList();
+            ObjectsToSelect.Add(B);
+            ObjectsToSelect.Add(B2);
+
+            Tekla.Structures.Model.UI.ModelObjectSelector MS = new Tekla.Structures.Model.UI.ModelObjectSelector();
+            MS.Select(ObjectsToSelect);
+
+            myModel.CommitChanges();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
