@@ -30,12 +30,12 @@ namespace BeamApplication
             //Beam myBeam = new Beam(new TSG.Point(1000, 1000, 1000),
             //                        new TSG.Point(6000, 6000, 1000));
             Beam myBeam = new Beam();
-            myBeam.Name = "Хомут";
-            myBeam.Material.MaterialString = "Ст3сп5_сортовой";
+            myBeam.Name = "РҐРѕРјСѓС‚";
+            myBeam.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
             myBeam.Profile.ProfileString = "CL16_5781_82";
-            myBeam.PartNumber.Prefix = "Деталь";
+            myBeam.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
             myBeam.PartNumber.StartNumber = 1;
-            myBeam.AssemblyNumber.Prefix = "Сборка";
+            myBeam.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
             myBeam.AssemblyNumber.StartNumber = 1;
             myBeam.Class = "20";
             myBeam.Position.Plane = TSM.Position.PlaneEnum.MIDDLE;
@@ -51,11 +51,11 @@ namespace BeamApplication
 
             if (!myBeam.Insert())
             {
-                Console.WriteLine("не добавил");
+                Console.WriteLine("РЅРµ РґРѕР±Р°РІРёР»");
             }
             if (myBeam.Insert())
             {
-                Console.WriteLine("Добавлено!");
+                Console.WriteLine("Р”РѕР±Р°РІР»РµРЅРѕ!");
             }
         }
 
@@ -76,12 +76,12 @@ namespace BeamApplication
             myPolyBeam.AddContourPoint(point2);
             myPolyBeam.AddContourPoint(point3);
 
-            myPolyBeam.Name = "Хомут";
-            myPolyBeam.Material.MaterialString = "Ст3сп5_сортовой";
+            myPolyBeam.Name = "РҐРѕРјСѓС‚";
+            myPolyBeam.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
             myPolyBeam.Profile.ProfileString = "CL16_5781_82";
-            myPolyBeam.PartNumber.Prefix = "Деталь";
+            myPolyBeam.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
             myPolyBeam.PartNumber.StartNumber = 1;
-            myPolyBeam.AssemblyNumber.Prefix = "Сборка";
+            myPolyBeam.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
             myPolyBeam.AssemblyNumber.StartNumber = 1;
             myPolyBeam.Class = "20";
             myPolyBeam.Position.Plane = TSM.Position.PlaneEnum.MIDDLE;
@@ -98,7 +98,7 @@ namespace BeamApplication
         {
             Model myModel = new Model();
             Picker _picker = new Picker();
-            ArrayList pickedPoints = _picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "Укажи полигон");
+            ArrayList pickedPoints = _picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "РЈРєР°Р¶Рё РїРѕР»РёРіРѕРЅ");
 
             ArrayList contourPoints = new ArrayList();
             foreach (Point point in pickedPoints)
@@ -111,12 +111,12 @@ namespace BeamApplication
             myContourPlate.Contour.ContourPoints = contourPoints;
             myContourPlate.Profile.ProfileString = "PL25";
             myContourPlate.Material.MaterialString = "S235";
-            myContourPlate.Name = "Хомут";
-            myContourPlate.Material.MaterialString = "Ст3сп5_сортовой";
+            myContourPlate.Name = "РҐРѕРјСѓС‚";
+            myContourPlate.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
             //myBeam.Profile.ProfileString = "CL16_5781_82";
-            myContourPlate.PartNumber.Prefix = "Деталь";
+            myContourPlate.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
             myContourPlate.PartNumber.StartNumber = 1;
-            myContourPlate.AssemblyNumber.Prefix = "Сборка";
+            myContourPlate.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
             myContourPlate.AssemblyNumber.StartNumber = 1;
             myContourPlate.Position.Depth = TSM.Position.DepthEnum.FRONT;
             myContourPlate.Class = "20";
@@ -166,12 +166,12 @@ namespace BeamApplication
             myPolyBeam.AddContourPoint(point2);
             myPolyBeam.AddContourPoint(point3);
 
-            myPolyBeam.Name = "Хомут";
-            myPolyBeam.Material.MaterialString = "Ст3сп5_сортовой";
+            myPolyBeam.Name = "РҐРѕРјСѓС‚";
+            myPolyBeam.Material.MaterialString = "РЎС‚3СЃРї5_СЃРѕСЂС‚РѕРІРѕР№";
             myPolyBeam.Profile.ProfileString = "CL16_5781_82";
-            myPolyBeam.PartNumber.Prefix = "Деталь";
+            myPolyBeam.PartNumber.Prefix = "Р”РµС‚Р°Р»СЊ";
             myPolyBeam.PartNumber.StartNumber = 1;
-            myPolyBeam.AssemblyNumber.Prefix = "Сборка";
+            myPolyBeam.AssemblyNumber.Prefix = "РЎР±РѕСЂРєР°";
             myPolyBeam.AssemblyNumber.StartNumber = 1;
             string a = "20";
             myPolyBeam.Class = a;
@@ -223,7 +223,7 @@ namespace BeamApplication
 
                     if (myPolyBeam != null)
                     {
-                        myPolyBeam.GetReportProperty("PROFILE", ref selPartProfile); //Получить зщначение параметра PROFILE и записать в переменную selPartProfile объявленную чуть выше. 
+                        myPolyBeam.GetReportProperty("PROFILE", ref selPartProfile); //РџРѕР»СѓС‡РёС‚СЊ Р·С‰РЅР°С‡РµРЅРёРµ РїР°СЂР°РјРµС‚СЂР° PROFILE Рё Р·Р°РїРёСЃР°С‚СЊ РІ РїРµСЂРµРјРµРЅРЅСѓСЋ selPartProfile РѕР±СЉСЏРІР»РµРЅРЅСѓСЋ С‡СѓС‚СЊ РІС‹С€Рµ. 
                         myPolyBeam.GetReportProperty("PROFILE", ref selPartmaterial);
                         myPolyBeam.GetReportProperty("START_X", ref selPartSTARTX);
                         myPolyBeam.GetReportProperty("START_Y", ref selPartSTARTY);
@@ -243,7 +243,7 @@ namespace BeamApplication
                         //////    ContourPoint myPolyBeamPoint = new ContourPoint(point, new Chamfer());
                         //////    myPolyBeamPoints.Add(myPolyBeamPoint);
                         //////}
-                        //_picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "Укажи полигон");
+                        //_picker.PickPoints(Picker.PickPointEnum.PICK_POLYGON, "РЈРєР°Р¶Рё РїРѕР»РёРіРѕРЅ");
                         //myPolyBeam.GetPolybeamCoordinateSystems()
 
                         label1.Text = myPolyBeamPoints.Count.ToString();
@@ -259,13 +259,13 @@ namespace BeamApplication
 
 
 
-                        textBox3.AppendText("Старт ( " + RoundselPartSTARTX.ToString() + "; " + RoundselPartSTARTY.ToString() + "; " + RoundselPartSTARTZ.ToString() + " )" + Environment.NewLine);
-                        textBox3.AppendText("СтартWP ( " + RoundselPartSTARTxINWORKPLANE.ToString() + "; " + RoundselPartSTARTyINWORKPLANE.ToString() + "; " + RoundselPartSTARTzINWORKPLANE.ToString() + " )" + Environment.NewLine);
+                        textBox3.AppendText("РЎС‚Р°СЂС‚ ( " + RoundselPartSTARTX.ToString() + "; " + RoundselPartSTARTY.ToString() + "; " + RoundselPartSTARTZ.ToString() + " )" + Environment.NewLine);
+                        textBox3.AppendText("РЎС‚Р°СЂС‚WP ( " + RoundselPartSTARTxINWORKPLANE.ToString() + "; " + RoundselPartSTARTyINWORKPLANE.ToString() + "; " + RoundselPartSTARTzINWORKPLANE.ToString() + " )" + Environment.NewLine);
                         textBox3.AppendText(selPARTGUID + Environment.NewLine + Environment.NewLine);
                         textBox3.AppendText(selPARTID + Environment.NewLine + Environment.NewLine);
                         textBox3.AppendText(selGUID + Environment.NewLine + Environment.NewLine);
                         textBox3.AppendText(selID + Environment.NewLine + Environment.NewLine);
-                        textBox3.AppendText(selPartProfile + Environment.NewLine); //Параметр плюс переход на новую строку
+                        textBox3.AppendText(selPartProfile + Environment.NewLine); //РџР°СЂР°РјРµС‚СЂ РїР»СЋСЃ РїРµСЂРµС…РѕРґ РЅР° РЅРѕРІСѓСЋ СЃС‚СЂРѕРєСѓ
                         textBox3.AppendText(selPartProfile + Environment.NewLine);
                         textBox3.AppendText("------------------------------" + Environment.NewLine);
                         //textBox3.AppendText(myPolyBeamPoints[0] + Environment.NewLine + myPolyBeamPoints[1]);
